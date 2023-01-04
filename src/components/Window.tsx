@@ -34,15 +34,20 @@ function WindowComp({ floor, room, window }: IProps) {
 
     return (
         <>
-            <h3>window</h3>
-            <button onClick={onDeleteWindowClicked}>delete window</button>
-            <Dropdown
-                options={['tempered', 'double', 'triple']}
-                label="glass"
-                id="glass"
-                onChange={onGlassChange}
-                value={house.floors[floor].rooms[room].windows[window].glass}
-            ></Dropdown>
+            <div className="window">
+                <div className="row">
+                    <h3>window</h3>
+                    <button onClick={onDeleteWindowClicked}>delete window</button>
+                </div>
+
+                <Dropdown
+                    options={['tempered', 'double', 'triple']}
+                    label="glass"
+                    id="glass"
+                    onChange={onGlassChange}
+                    value={house.floors[floor].rooms[room].windows[window].glass}
+                ></Dropdown>
+            </div>
         </>
     )
 }

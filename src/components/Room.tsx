@@ -32,12 +32,18 @@ function Room({ floor, room }: IProps) {
 
     return (
         <>
-            <h3>{myRoom.type}</h3>
-            <button onClick={onDeleteRoomClicked}>delete room</button>
-            <button onClick={onAddWindowClicked}>add window</button>
-            {myRoom.windows.map((window, i) => (
-                <WindowComp key={i} floor={floor} room={room} window={i}></WindowComp>
-            ))}
+            <div className="room">
+                <div className="row">
+                    <h3>{myRoom.type}</h3>
+                    <button onClick={onDeleteRoomClicked}>delete {myRoom.type}</button>
+                </div>
+
+                <button onClick={onAddWindowClicked}>add window</button>
+                {myRoom.windows.map((window, i) => (
+                    <WindowComp key={i} floor={floor} room={room} window={i}></WindowComp>
+                ))}
+                <div className="roomDivider"></div>
+            </div>
         </>
     )
 }

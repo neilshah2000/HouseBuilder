@@ -14,3 +14,43 @@ code {
     width: 100%;
     margin-top: 30px;
 }
+
+.row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.app {
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.floor {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.room {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.window {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.floorDivider {
+    border-bottom: 1px solid grey;
+    margin-top: 30px;
+}
+
+.roomDivider {
+    height: 20px;
+}
+
+.houseData {
+    margin-bottom: 30px;
+}

@@ -9,7 +9,7 @@ interface IProps {
 function Input({ label, id, value, onChange }: IProps) {
     return (
         <>
-            <div>
+            <div className="row">
                 <label htmlFor={id}>{label}</label>
                 <input value={value} id={id} onChange={onChange} />
             </div>

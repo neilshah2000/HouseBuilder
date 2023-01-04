@@ -48,13 +48,19 @@ function Floor({ floor }: IProps) {
 
     return (
         <>
-            <h3 key={floor}>floor {floor}</h3>
-            <button onClick={onDeleteFloorClicked}>delete floor</button>
-            <button onClick={onAddBedroomClicked}>add bedroom</button>
-            <button onClick={onAddLoungeClicked}>add lounge</button>
-            {myFloor.rooms.map((room, i) => (
-                <Room key={i} floor={floor} room={i}></Room>
-            ))}
+            <div className="floor">
+                <div className="row">
+                    <h3 key={floor}>floor {floor}</h3>
+                    <button onClick={onDeleteFloorClicked}>delete floor {floor}</button>
+                </div>
+
+                <button onClick={onAddBedroomClicked}>add bedroom</button>
+                <button onClick={onAddLoungeClicked}>add lounge</button>
+                {myFloor.rooms.map((room, i) => (
+                    <Room key={i} floor={floor} room={i}></Room>
+                ))}
+                <div className="floorDivider"></div>
+            </div>
         </>
     )
 }

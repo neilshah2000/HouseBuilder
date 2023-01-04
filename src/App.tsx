@@ -54,23 +54,29 @@ function App() {
 
     return (
         <>
-            <h1>House Builder</h1>
-            <Dropdown
-                options={['brick', 'slab', 'concrete']}
-                label="foundation"
-                id="foundation"
-                onChange={onFoundationChange}
-                value={house.foundation}
-            ></Dropdown>
-            <Dropdown options={['straw', 'thatched', 'flat']} label="roof" id="roof" onChange={onRoofChange} value={house.roof}></Dropdown>
-            <Input label="size" id="houseSize" value={house.size.toString()} onChange={onHouseSizeInputChange}></Input>
-            <button onClick={onAddFloorClicked}>add floor</button>
-            {house.floors.map((floor, i) => (
-                <Floor key={i} floor={i}></Floor>
-            ))}
+            <div className="app">
+                <h1>House Builder</h1>
 
-            <div className="saveSection">
-                <button onClick={onSaveClicked}>save</button>
+                <div className="houseData">
+                    <Dropdown
+                        options={['brick', 'slab', 'concrete']}
+                        label="foundation"
+                        id="foundation"
+                        onChange={onFoundationChange}
+                        value={house.foundation}
+                    ></Dropdown>
+                    <Dropdown options={['straw', 'thatched', 'flat']} label="roof" id="roof" onChange={onRoofChange} value={house.roof}></Dropdown>
+                    <Input label="size" id="houseSize" value={house.size.toString()} onChange={onHouseSizeInputChange}></Input>
+                </div>
+
+                <button onClick={onAddFloorClicked}>Add Floor</button>
+                {house.floors.map((floor, i) => (
+                    <Floor key={i} floor={i}></Floor>
+                ))}
+
+                <div className="saveSection">
+                    <button onClick={onSaveClicked}>Save</button>
+                </div>
             </div>
         </>
     )

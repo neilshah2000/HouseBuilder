@@ -10,7 +10,7 @@ interface IProps {
 function Dropdown({ options, label, id, value, onChange }: IProps) {
     return (
         <>
-            <div>
+            <div className="row">
                 <label htmlFor={id}>{label}</label>
 
                 <select id={id} onChange={onChange} value={value}>
