@@ -1,5 +1,5 @@
 import { useEffect, ChangeEvent } from 'react'
-import { useStore } from './HouseStore'
+import { useStore, getHouseData, setHouseData } from './HouseStore'
 import Dropdown from './components/Dropdown'
 import { House, Foundations, Roofs } from './types'
 import Input from './components/Input'
@@ -11,6 +11,16 @@ function App() {
     const house = useStore((state) => state.house)
     const updateHouse = useStore((state) => state.updateHouse)
     console.log('house', house)
+
+    useEffect(() => {
+        const savedHouseData = getHouseData()
+        if (savedHouseData === null) {
+            console.log('no saved data')
+        } else {
+            console.log('saved data')
+            updateHouse(savedHouseData)
+        }
+    }, [])
 
     const onFoundationChange = (event: ChangeEvent<HTMLSelectElement>) => {
         console.log(event.target.value)
@@ -38,6 +48,10 @@ function App() {
         updateHouse(house)
     }
 
+    const onSaveClicked = () => {
+        setHouseData(house)
+    }
+
     return (
         <>
             <h1>House Builder</h1>
@@ -54,6 +68,10 @@ function App() {
             {house.floors.map((floor, i) => (
                 <Floor key={i} floor={i}></Floor>
             ))}
+
+            <div className="saveSection">
+                <button onClick={onSaveClicked}>save</button>
+            </div>
         </>
     )
 }
