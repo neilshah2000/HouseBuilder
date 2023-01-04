@@ -1,8 +1,16 @@
+export type Foundations = 'brick' | 'slab' | 'concrete'
+
+export type Roofs = 'straw' | 'thatched' | 'flat'
+
+export type RoomTypes = 'bedroom' | 'lounge' | 'diner' | 'kitchen' | 'bathroom' | 'office'
+
+export type Glasses = 'tempered' | 'double' | 'triple'
+
 export interface House {
-    foundation: 'brick' | 'slab' | 'concrete'
+    foundation: Foundations
     size: number
     floors: Floor[]
-    roof: 'straw' | 'thatched' | 'flat'
+    roof: Roofs
     garden: string[] // 3rd party values
 }
 
@@ -14,6 +22,7 @@ export interface Room {
     size: number
     floor: 'wood' | 'carpet'
     windows: Window[]
+    type: RoomTypes
 }
 
 export interface Bedroom extends Room {
@@ -46,5 +55,5 @@ export interface Office extends Room {
 
 export interface Window {
     style: 'bay' | 'flat' | 'full' | string
-    glass: 'tempered' | 'double' | 'triple'
+    glass: Glasses
 }

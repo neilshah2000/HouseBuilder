@@ -1,18 +1,26 @@
+import { ChangeEvent } from 'react'
+
 interface IProps {
     options: string[]
     label: string
     id: string
+    value: string
+    onChange: (e: ChangeEvent<HTMLSelectElement>) => void
 }
-function Dropdown({ options, label, id }: IProps) {
+function Dropdown({ options, label, id, value, onChange }: IProps) {
     return (
         <>
-            <label htmlFor={id}>{label}</label>
+            <div>
+                <label htmlFor={id}>{label}</label>
 
-            <select id={id}>
-                {options.map((option) => (
-                    <option value={option}>{option}</option>
-                ))}
-            </select>
+                <select id={id} onChange={onChange} value={value}>
+                    {options.map((option, i) => (
+                        <option key={i} value={option}>
+                            {option}
+                        </option>
+                    ))}
+                </select>
+            </div>
         </>
     )
 }

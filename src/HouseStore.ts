@@ -1,12 +1,12 @@
 import create from 'zustand'
-import { House } from './types'
+import { House, Floor } from './types'
 
 interface StoreState {
     house: House
-    actions: {}
+    updateHouse: (h: House) => void
 }
 
-const useStore = create<StoreState>()((set, get) => ({
+export const useStore = create<StoreState>()((set, get) => ({
     house: {
         foundation: 'brick',
         size: 0,
@@ -14,14 +14,22 @@ const useStore = create<StoreState>()((set, get) => ({
         roof: 'flat',
         garden: [],
     },
-    actions: {
-        // TODO: everything re-renders
-        updateHouse: (updated: House) => {
-            set((state) => ({ house: updated }))
-        },
-    },
+    updateHouse: (updated: House) => set((state) => ({ ...state, house: { ...updated } })),
+    // break down nested state to allow individual nested slices to re-render independantly
+    // https://www.pluralsight.com/guides/deeply-nested-objectives-redux
+
+    // updateFloor: (floor: number, updated: Floor) => set((state) => {
+    //     const changed = {
+    //         ...state,
+    //         house: {
+    //             ...state.house,
+    //             floors: {
+    //                 ...state.house.floors
+    //             }
+    //         }
+    //     }
+    //     return {
+
+    //     }
+    // }),
 }))
-
-export const useHouse = () => useStore((state) => state.house)
-
-export const useHouseActions = () => useStore((state) => state.actions)
